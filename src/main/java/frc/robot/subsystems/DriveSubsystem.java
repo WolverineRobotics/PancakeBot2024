@@ -15,10 +15,11 @@ import com.ctre.phoenix.motorcontrol.can.*;
 public class DriveSubsystem extends SubsystemBase {
   public DriveSubsystem() {
 
-    TalonSRX _leftMotor1 = new WPI_TalonSRX(Constants.LEFT_MOTOR_1);
-    VictorSPX _leftMotor2 = new WPI_VictorSPX(Constants.LEFT_MOTOR_2);
-    TalonSRX _rightMotor1 = new WPI_TalonSRX(Constants.RIGHT_MOTOR_1);
-    TalonSRX _rightMotor2 = new WPI_TalonSRX(Constants.RIGHT_MOTOR_2);
+    // Declare Motor CAN IDs 
+    WPI_TalonSRX _leftMotor1 = new WPI_TalonSRX(Constants.LEFT_MOTOR_1, "rio");
+    WPI_VictorSPX _leftMotor2 = new WPI_VictorSPX(Constants.LEFT_MOTOR_2, "rio");
+    WPI_TalonSRX _rightMotor1 = new WPI_TalonSRX(Constants.RIGHT_MOTOR_1, "rio");
+    WPI_TalonSRX _rightMotor2 = new WPI_TalonSRX(Constants.RIGHT_MOTOR_2, "rio");
 
     // Slave and Master
     _leftMotor1.follow(_leftMotor2);
