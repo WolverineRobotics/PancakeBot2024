@@ -21,7 +21,7 @@ public class DefaultDriveCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.getSubsystem();
+    m_subsystem.ArcadeDrive();
   }
 
   // Called once the command ends or is interrupted.
