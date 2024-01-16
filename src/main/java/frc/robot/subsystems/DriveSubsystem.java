@@ -25,11 +25,15 @@ public class DriveSubsystem extends SubsystemBase {
     _leftMotor1.follow(_leftMotor2);
     _rightMotor1.follow(_rightMotor2);
 
-    // Set for joystick up/down
+    /*
+    /
+    / ** UNTESTED **
+    / Set joystick output, there is probably a better way to implement this
+    / by setting a left/right SpeedControllerGroup and passing it into the DifferentialDrive class.
+    /
+    */
     _leftMotor2.set(ControlMode.PercentOutput, Input.getVertical());
     _rightMotor2.set(ControlMode.PercentOutput, Input.getVertical());
-
-    // Set for joystick left/right
     _leftMotor2.set(ControlMode.PercentOutput, Input.getHorizontal());
     _rightMotor2.set(ControlMode.PercentOutput, Input.getHorizontal());
 
