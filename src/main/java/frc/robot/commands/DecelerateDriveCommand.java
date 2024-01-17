@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 
 public class DecelerateDriveCommand extends Command {
   private final DriveSubsystem m_drive;
-  private double speedReduction;
 
   public DecelerateDriveCommand(DriveSubsystem subsystem) {
     m_drive = subsystem;
@@ -26,12 +25,30 @@ public class DecelerateDriveCommand extends Command {
   @Override
   public void execute() {
 
+    // X, Y Movement
+    double throttle = Input.getHorizontal();
+    double turn = Input.getVerical(); 
+
+    // For Deceleration
+    double speedReduction = Constants.SPEED_REDUCTION;
+
     if (Input.driveDecelerate()){
       speedReduction = Constants.SPEED_REDUCTION;
-      DriveSubsystem.driveTrain.arcadeDrive(Input.getVertical() * speedReduction, Input.getHorizontal() * speedReduction);
+      // DriveSubsystem.driveTrain.arcadeDrive(Input.getVertical() * speedReduction, Input.getHorizontal() * speedReduction);
     }
 
-    m_drive.ArcadeDrive();
+    arcadeDrive(throttle, turn, speedReduction);
+  }
+
+  /*
+  * I don't know if this works I'm using a chromebook to code this
+  */ 
+
+  public void arcadeDrive(double throttle, double turn, double speedReduction){
+    throttle *= speedReduction;
+    turn *= speedReduction;
+
+    m_drive.arcadeDrive(throttle, turn);
   }
 
   // Called once the command ends or is interrupted.
