@@ -5,13 +5,15 @@
 package frc.robot.commands;
 
 import frc.robot.Input;
+import frc.robot.Constants;
 import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
-public class DefaultDriveCommand extends Command {
+public class DecelerateDriveCommand extends Command {
   private final DriveSubsystem m_drive;
+  private double speedReduction;
 
-  public DefaultDriveCommand(DriveSubsystem subsystem) {
+  public DecelerateDriveCommand(DriveSubsystem subsystem) {
     m_drive = subsystem;
     addRequirements(subsystem);
   }
@@ -23,6 +25,12 @@ public class DefaultDriveCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+
+    if (Input.driveDecelerate()){
+      speedReduction = Constants.SPEED_REDUCTION;
+      DriveSubsystem.driveTrain.arcadeDrive(Input.getVertical() * speedReduction, Input.getHorizontal() * speedReduction);
+    }
+
     m_drive.ArcadeDrive();
   }
 

@@ -16,7 +16,11 @@ public class Input {
     }
 
     public static double getHorizontal(){
-        return driveController.getLeftX();
+        return driveController.getRightX();
+    }
+
+    public static boolean driveDecelerate(){
+        return driveController.getLeftBumper();
     }
 
     public static XboxController Driver(){

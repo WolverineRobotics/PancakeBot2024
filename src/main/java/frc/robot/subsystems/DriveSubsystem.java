@@ -15,25 +15,34 @@ import com.ctre.phoenix.motorcontrol.can.*;
 
 public class DriveSubsystem extends SubsystemBase {
 
-  private DifferentialDrive driveTrain;
+  public static DifferentialDrive driveTrain;
 
   public DriveSubsystem() {
 
     // Declare Motor CAN IDs 
-    WPI_TalonSRX _leftMotor1 = new WPI_TalonSRX(Constants.LEFT_MOTOR_1);
-    WPI_VictorSPX _leftMotor2 = new WPI_VictorSPX(Constants.LEFT_MOTOR_2);
-    WPI_TalonSRX _rightMotor1 = new WPI_TalonSRX(Constants.RIGHT_MOTOR_1);
-    WPI_TalonSRX _rightMotor2 = new WPI_TalonSRX(Constants.RIGHT_MOTOR_2);
+    WPI_TalonSRX _leftFollower = new WPI_TalonSRX(Constants.LEFT_MOTOR_1);
+    WPI_VictorSPX _leftMaster = new WPI_VictorSPX(Constants.LEFT_MOTOR_2);
+    WPI_TalonSRX _rightFollower = new WPI_TalonSRX(Constants.RIGHT_MOTOR_1);
+    WPI_TalonSRX _rightMaster = new WPI_TalonSRX(Constants.RIGHT_MOTOR_2);
 
     // Slave and Master
-    _leftMotor1.follow(_leftMotor2);
-    _rightMotor1.follow(_rightMotor2);
+    _leftFollower.follow(_leftMaster);
+    _rightFollower.follow(_rightMaster);
     
-    _leftMotor1.setInverted(InvertType.FollowMaster);
-    _rightMotor1.setInverted(InvertType.FollowMaster);
+    _leftFollower.setInverted(InvertType.FollowMaster);
+    _rightFollower.setInverted(InvertType.FollowMaster);
 
-    driveTrain = new DifferentialDrive(_leftMotor2, _rightMotor2);
+    _leftFollower.setNeutralMode(NeutralMode.Brake);
+    _leftMaster.setNeutralMode(NeutralMode.Brake);
+    _rightFollower.setNeutralMode(NeutralMode.Brake);
+    _rightMaster.setNeutralMode(NeutralMode.Brake);
 
+    driveTrain = new DifferentialDrive(_leftMaster, _rightMaster);
+
+  }
+  
+  public void setDeadband(){
+    driveTrain.setDeadband(Constants.DEADBAND_CONST);
   }
 
   // Tele-Op Driving 
@@ -59,7 +68,6 @@ public class DriveSubsystem extends SubsystemBase {
           /* one-time action goes here */
         });
   }
-
 
   /**
    * An example method querying a boolean state of the subsystem (for example, a digital sensor).
