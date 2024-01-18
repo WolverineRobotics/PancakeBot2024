@@ -15,7 +15,7 @@ import com.ctre.phoenix.motorcontrol.can.*;
 
 public class DriveSubsystem extends SubsystemBase {
 
-  public static DifferentialDrive driveTrain;
+  public DifferentialDrive driveTrain;
 
   public DriveSubsystem() {
 
@@ -38,6 +38,7 @@ public class DriveSubsystem extends SubsystemBase {
     _rightMaster.setNeutralMode(NeutralMode.Brake);
 
     driveTrain = new DifferentialDrive(_leftMaster, _rightMaster);
+
   }
   
   public void setDeadband(){

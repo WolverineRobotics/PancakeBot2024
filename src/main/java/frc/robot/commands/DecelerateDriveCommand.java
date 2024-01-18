@@ -31,18 +31,13 @@ public class DecelerateDriveCommand extends Command {
 
     // For Deceleration
     double speedReduction = Constants.SPEED_REDUCTION;
-
-    if (Input.driveDecelerate()){
-      speedReduction = Constants.SPEED_REDUCTION;
-    }
-
     arcadeDrive(throttle, turn, speedReduction);
   }
 
   public void arcadeDrive(double throttle, double turn, double speedReduction){
     throttle *= speedReduction;
     turn *= speedReduction;
-    DriveSubsystem.driveTrain.arcadeDrive(turn * speedReduction, throttle * speedReduction);
+    m_drive.driveTrain.arcadeDrive(turn * speedReduction, throttle * speedReduction);
   }
 
   // Called once the command ends or is interrupted.
