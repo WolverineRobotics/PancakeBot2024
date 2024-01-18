@@ -6,7 +6,7 @@ package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
-// import frc.robot.commands.DecelerateDriveCommand;
+import frc.robot.commands.DecelerateDriveCommand;
 import frc.robot.commands.DefaultDriveCommand;
 import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -39,7 +39,7 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-    // m_driverController.leftBumper().whileTrue(new DecelerateDriveCommand(m_drive));
+    m_driverController.leftBumper().whileTrue(new DecelerateDriveCommand(m_drive));
   }
 
   public DriveSubsystem VroomVroom(){
