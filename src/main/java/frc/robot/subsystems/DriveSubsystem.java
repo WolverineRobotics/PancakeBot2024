@@ -46,7 +46,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   // Tele-Op Driving 
   public void ArcadeDrive(){
-    driveTrain.arcadeDrive(Input.getVertical(), Input.getHorizontal());
+    driveTrain.arcadeDrive(Input.getVertical(), -Input.getHorizontal());
   }
 
   // Rotate when given a speed

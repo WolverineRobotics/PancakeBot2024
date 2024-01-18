@@ -17,6 +17,7 @@ public class RobotContainer {
 
   private DriveSubsystem m_drive = new DriveSubsystem();
   private Command m_drivecommand = new DefaultDriveCommand(m_drive);
+  joeMama = new Input(driveDecelerate());
   
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
@@ -32,7 +33,8 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-    m_driverController.leftBumper().whileTrue(new DecelerateDriveCommand(m_drive));
+    // m_driverController.leftBumper().whileTrue(new DecelerateDriveCommand(m_drive));
+    joeMama.driveDecelerate.whileTrue(new DecelerateDriveCommand(m_drive));
   }
 
   public DriveSubsystem VroomVroom(){
