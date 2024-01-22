@@ -31,11 +31,6 @@ public class DecelerateDriveCommand extends Command {
 
     // For Deceleration
     double speedReduction = Constants.SPEED_REDUCTION;
-
-    if (Input.driveDecelerate()){
-      speedReduction = Constants.SPEED_REDUCTION;
-    }
-
     arcadeDrive(speedReduction);
   }
 

@@ -19,12 +19,11 @@ public class Input {
         return driveController.getRightX() * 0.8;
     }
 
-    public static boolean driveDecelerate(){
-        return driveController.getLeftBumper();
-    }
+    public static double driveDecelerate(){
+        return driveController.getLeftTriggerAxis();
+        }
 
     public static XboxController Driver(){
         return driveController;
-    }
-
+        }
 }
