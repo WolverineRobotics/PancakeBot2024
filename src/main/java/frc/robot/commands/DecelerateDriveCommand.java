@@ -26,8 +26,8 @@ public class DecelerateDriveCommand extends Command {
   public void execute() {
 
     // X, Y Movement + Bumper
-    double throttle = Input.getHorizontal();
-    double turn = Input.getVertical(); 
+    // double throttle = Input.getHorizontal();
+    // double turn = Input.getVertical(); 
 
     // For Deceleration
     double speedReduction = Constants.SPEED_REDUCTION;
@@ -36,13 +36,13 @@ public class DecelerateDriveCommand extends Command {
       speedReduction = Constants.SPEED_REDUCTION;
     }
 
-    arcadeDrive(throttle, turn, speedReduction);
+    arcadeDrive(speedReduction);
   }
 
-  public void arcadeDrive(double throttle, double turn, double speedReduction){
-    throttle *= speedReduction;
-    turn *= speedReduction;
-    DriveSubsystem.driveTrain.arcadeDrive(turn * speedReduction, throttle * speedReduction);
+  public void arcadeDrive(double speedReduction){
+    // throttle *= speedReduction;
+    // turn *= speedReduction;
+    DriveSubsystem.driveTrain.arcadeDrive(Input.getHorizontal() * speedReduction, Input.getVertical() * speedReduction);
   }
 
   // Called once the command ends or is interrupted.

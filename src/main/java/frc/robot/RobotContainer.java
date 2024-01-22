@@ -33,7 +33,7 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-    // m_driverController.leftBumper().whileTrue(new DecelerateDriveCommand(m_drive));
+    m_driverController.leftBumper().whileTrue(new DecelerateDriveCommand(m_drive));
     // joeMama.driveDecelerate.whileTrue(new DecelerateDriveCommand(m_drive));
   }
 

@@ -38,15 +38,16 @@ public class DriveSubsystem extends SubsystemBase {
     _rightMaster.setNeutralMode(NeutralMode.Brake);
 
     driveTrain = new DifferentialDrive(_leftMaster, _rightMaster);
+    driveTrain.setSafetyEnabled(false);
   }
   
-  public void setDeadband(){
-    driveTrain.setDeadband(Constants.DEADBAND_CONST);
-  }
+  // public void setDeadband(){
+  //   driveTrain.setDeadband(Constants.DEADBAND_CONST);
+  // }
 
   // Tele-Op Driving 
   public void ArcadeDrive(){
-    driveTrain.arcadeDrive(Input.getVertical(), -Input.getHorizontal());
+    driveTrain.arcadeDrive(Input.getHorizontal(),Input.getVertical());
   }
 
   // Rotate when given a speed
