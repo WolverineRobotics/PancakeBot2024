@@ -30,14 +30,15 @@ public class DecelerateDriveCommand extends Command {
     // double turn = Input.getVertical(); 
 
     // For Deceleration
-    double speedReduction = Constants.SPEED_REDUCTION;
-    arcadeDrive(speedReduction);
+    double yspeedReduction = Constants.Y_SPEED_REDUCTION;
+    double xspeedReduction = Constants.X_SPEEDREDUCTION;
+    arcadeDrive(xspeedReduction, yspeedReduction);
   }
 
-  public void arcadeDrive(double speedReduction){
+  public void arcadeDrive(double xspeedReduction, double yspeedReduction){
     // throttle *= speedReduction;
     // turn *= speedReduction;
-    DriveSubsystem.driveTrain.arcadeDrive(Input.getHorizontal() * speedReduction, Input.getVertical() * speedReduction);
+    DriveSubsystem.driveTrain.arcadeDrive(Input.getHorizontal() * xspeedReduction, Input.getVertical() * yspeedReduction);
   }
 
   // Called once the command ends or is interrupted.

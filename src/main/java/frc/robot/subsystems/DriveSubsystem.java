@@ -24,8 +24,7 @@ public class DriveSubsystem extends SubsystemBase {
     WPI_VictorSPX _leftMaster = new WPI_VictorSPX(Constants.LEFT_MOTOR_2);
     WPI_TalonSRX _rightFollower = new WPI_TalonSRX(Constants.RIGHT_MOTOR_1);
     WPI_TalonSRX _rightMaster = new WPI_TalonSRX(Constants.RIGHT_MOTOR_2);
-
-    // Slave and Master
+    
     _leftFollower.follow(_leftMaster);
     _rightFollower.follow(_rightMaster);
     

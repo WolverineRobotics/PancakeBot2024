@@ -13,7 +13,8 @@ public final class Constants {
   public static final int LEFT_MOTOR_2 = 5;
   public static final int RIGHT_MOTOR_1 = 4;
   public static final int RIGHT_MOTOR_2 = 3;
-  public static final double SPEED_REDUCTION = 0.5;
+  public static final double X_SPEEDREDUCTION = 0.6;
+  public static final double Y_SPEED_REDUCTION = 0.5;
   public static final double DEADBAND_CONST = 0.05;
 
 }
