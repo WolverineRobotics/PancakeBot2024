@@ -10,9 +10,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class DefaultDriveCommand extends Command {
   private final DriveSubsystem m_drive;
 
-  public DefaultDriveCommand(DriveSubsystem subsystem) {
-    m_drive = subsystem;
-    addRequirements(subsystem);
+  public DefaultDriveCommand(DriveSubsystem drive_subsystem) {
+    m_drive = drive_subsystem;
+    addRequirements(drive_subsystem);
   }
 
   // Called when the command is initially scheduled.

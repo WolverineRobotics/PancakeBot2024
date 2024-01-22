@@ -8,9 +8,8 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.DecelerateDriveCommand;
 import frc.robot.commands.DefaultDriveCommand;
-import frc.robot.subsystems.CameraSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
-
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -18,7 +17,6 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 public class RobotContainer {
 
   private DriveSubsystem m_drive = new DriveSubsystem();
-  private CameraSubsystem r_camera = new CameraSubsystem();
   private Command m_drivecommand = new DefaultDriveCommand(m_drive);
   
   private final CommandXboxController m_driverController =
@@ -30,8 +28,8 @@ public class RobotContainer {
     m_drive = new DriveSubsystem();
     m_drivecommand = new DefaultDriveCommand(m_drive);
 
-    r_camera = new CameraSubsystem();
     CommandScheduler.getInstance().setDefaultCommand(m_drive, m_drivecommand);
+    CameraServer.startAutomaticCapture();
     configureBindings();
   }
 
