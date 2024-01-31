@@ -29,7 +29,10 @@ private Command m_autonomousCommand;
 
   /** This function is called once each time the robot enters Disabled mode. */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+    LimelightHelpers.setLEDMode_ForceOff("");
+
+  }
 
   @Override
   public void disabledPeriodic() {}
@@ -43,6 +46,9 @@ private Command m_autonomousCommand;
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
     }
+
+    LimelightHelpers.setLEDMode_ForceOn("");
+
   }
 
   /** This function is called periodically during autonomous. */
@@ -54,6 +60,9 @@ private Command m_autonomousCommand;
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+
+    LimelightHelpers.setLEDMode_ForceOff("");
+
   }
 
   /** This function is called periodically during operator control. */

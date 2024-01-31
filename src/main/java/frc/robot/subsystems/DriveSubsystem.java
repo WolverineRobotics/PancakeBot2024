@@ -51,7 +51,11 @@ public class DriveSubsystem extends SubsystemBase {
 
   // Rotate when given a speed
   public void Rotate(double speed){
-    driveTrain.arcadeDrive(0, speed);
+    driveTrain.arcadeDrive(speed, 0);
+  }
+
+  public void AutoDrive(double speed,double rotation){
+    driveTrain.arcadeDrive(rotation, speed);
   }
 
   // Move straight when given a speed

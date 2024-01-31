@@ -8,7 +8,9 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.DecelerateDriveCommand;
 import frc.robot.commands.DefaultDriveCommand;
+import frc.robot.commands.LimelightAlignCommand;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.LimelightSubsystem;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -17,7 +19,9 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 public class RobotContainer {
 
   private DriveSubsystem m_drive = new DriveSubsystem();
+  private LimelightSubsystem m_limelight = new LimelightSubsystem();
   private Command m_drivecommand = new DefaultDriveCommand(m_drive);
+  private Command m_limelightCommand = new LimelightAlignCommand(m_drive, m_limelight);
   
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
@@ -44,7 +48,8 @@ public class RobotContainer {
   
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return Autos.exampleAuto(m_drive);
+    // return Autos.exampleAuto(m_drive);
+    return m_limelightCommand;
   }
   
 }
