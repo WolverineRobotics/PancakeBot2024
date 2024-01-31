@@ -36,8 +36,6 @@ public class DecelerateDriveCommand extends Command {
   }
 
   public void arcadeDrive(double xspeedReduction, double yspeedReduction){
-    // throttle *= speedReduction;
-    // turn *= speedReduction;
     DriveSubsystem.driveTrain.arcadeDrive(Input.getHorizontal() * xspeedReduction, Input.getVertical() * yspeedReduction);
   }
 
